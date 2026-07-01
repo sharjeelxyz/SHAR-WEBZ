@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Grip } from "lucide-react";
+import logo from "../assets/sharwebzLogo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,13 +26,17 @@ const Navbar = () => {
       <nav
         className={`fixed w-full z-50 top-0 left-0 transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm  py-0"
+            ? "bg-white backdrop-blur-md shadow-sm  py-0"
             : "bg-transparent  border-b-0"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo (Always on the left) */}
-          <div className="font-bold tracking-tighter text-black text-2xl">
+          <div className="flex items-center gap-2 font-bold tracking-tighter text-black text-2xl">
+            <span>
+              {" "}
+              <img src={logo} alt="" height={40} width={40} />
+            </span>
             SHAR | WEBZ
           </div>
 
