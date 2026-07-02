@@ -32,7 +32,7 @@ const ProcessSection = () => {
   return (
     <section
       id="process"
-      className="py-24 md:py-32 bg-white border-t border-black/10"
+      className="py-24 md:py-32 bg-gray-50 border-t border-black/10"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
