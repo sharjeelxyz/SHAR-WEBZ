@@ -32,7 +32,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Logo (Always on the left) */}
-          <div className="flex items-center gap-2 font-bold tracking-tighter text-black text-2xl">
+          <div className="flex items-center gap-2 font-semibold  tracking-tighter text-black text-2xl">
             <span>
               {" "}
               <img src={logo} alt="" height={40} width={40} />
@@ -54,7 +54,7 @@ const Navbar = () => {
                   className="flex items-center gap-3 cursor-pointer group"
                 >
                   <span className="text-sm font-semibold tracking-widest uppercase text-gray-400 group-hover:text-black transition-colors">
-                    Menu
+                    {/* Menu */}
                   </span>
                   <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center group-hover:bg-black/5 transition-colors">
                     <Grip size={18} className="text-black" />
