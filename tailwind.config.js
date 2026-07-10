@@ -24,6 +24,7 @@ export default {
         display: ['Calistoga', 'Georgia', 'serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+        brutal: ['"Bebas Neue"', 'sans-serif'],
       },
       boxShadow: {
         'sys-sm': '0 1px 3px rgba(0,0,0,0.06)',
