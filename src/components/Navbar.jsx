@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Grip } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/sharwebzLogo.png";
 
 const Navbar = () => {
@@ -9,7 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -21,80 +21,45 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: "Services", href: "#services" },
+    { name: "Work", href: "#work" },
+    { name: "Process", href: "#process" },
+    { name: "About", href: "#about" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
     <>
       <nav
-        className={`fixed w-full z-50 top-0 left-0 transition-all duration-500 ease-in-out ${
+        className={`fixed w-full z-50 top-0 left-0 transition-all duration-[400ms] ease-in-out ${
           isScrolled
-            ? "bg-white backdrop-blur-md shadow-sm  py-0"
-            : "bg-transparent  border-b-0"
+            ? "bg-white/70 backdrop-blur-md border-b border-black/5"
+            : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo (Always on the left) */}
-          <div className="flex items-center gap-2 font-bold tracking-tighter text-black text-2xl">
-            <span>
-              {" "}
-              <img src={logo} alt="" height={40} width={40} />
-            </span>
-            SHAR | WEBZ
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 h-[90px] flex items-center justify-between">
+          <div className="flex items-center gap-4 font-sans font-semibold tracking-tighter text-black text-xl">
+            {/* <img src={logo} alt="Shar Webz Logo" className="h-10 w-10 object-contain" /> */}
+            <span>SHAR | WEBZ</span>
           </div>
 
-          {/* Desktop Right Side */}
-          <div className="hidden md:flex items-center h-full">
-            <AnimatePresence mode="wait">
-              {!isScrolled ? (
-                // Initial State: Sleek Icon at the top
-                <motion.div
-                  key="menu-icon"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex items-center gap-3 cursor-pointer group"
-                >
-                  <span className="text-sm font-semibold tracking-widest uppercase text-gray-400 group-hover:text-black transition-colors">
-                    Menu
-                  </span>
-                  <div className="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center group-hover:bg-black/5 transition-colors">
-                    <Grip size={18} className="text-black" />
-                  </div>
-                </motion.div>
-              ) : (
-                // Scrolled State: Full Tabs
-                <motion.div
-                  key="full-tabs"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 30 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="flex items-center gap-10 text-sm font-medium"
-                >
-                  <a
-                    href="#services"
-                    className="text-gray-500 hover:text-black transition-colors duration-300"
-                  >
-                    Services
-                  </a>
-                  <a
-                    href="#process"
-                    className="text-gray-500 hover:text-black transition-colors duration-300"
-                  >
-                    Process
-                  </a>
-                  <a
-                    href="#work"
-                    className="text-gray-500 hover:text-black transition-colors duration-300"
-                  >
-                    Work
-                  </a>
+          <div className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="px-5 py-2.5 text-[15px] font-sans font-medium text-neutral-600 hover:text-black hover:bg-[#f5f5f5] rounded-full transition-all duration-[250ms]"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
 
-                  <button className="bg-black text-white px-6 py-2.5 text-sm rounded hover:bg-gray-900 transition-all duration-300 font-semibold tracking-wide ml-4">
-                    Get in touch
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
+          <div className="hidden md:flex items-center">
+            <button className="bg-black text-white px-7 py-3 rounded-full text-[15px] font-sans font-medium hover:-translate-y-0.5 transition-transform duration-[250ms] shadow-sm">
+              Start Project
+            </button>
           </div>
 
           {/* Mobile Toggle */}
@@ -102,7 +67,11 @@ const Navbar = () => {
             className="md:hidden text-black p-2"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? (
+              <X size={24} strokeWidth={1.5} />
+            ) : (
+              <Menu size={24} strokeWidth={1.5} />
+            )}
           </button>
         </div>
 
@@ -113,34 +82,25 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4 }}
-              className="md:hidden absolute top-full left-0 w-full border-b border-black/5 bg-white shadow-xl overflow-hidden"
+              transition={{ duration: 0.3 }}
+              className="md:hidden absolute top-full left-0 w-full border-b border-black/5 bg-white/95 backdrop-blur-xl overflow-hidden"
             >
-              <div className="px-8 py-10 flex flex-col gap-6">
-                <a
-                  href="#services"
-                  onClick={() => setIsOpen(false)}
-                  className="text-xl font-medium text-gray-500 hover:text-black transition-colors"
-                >
-                  Services
-                </a>
-                <a
-                  href="#process"
-                  onClick={() => setIsOpen(false)}
-                  className="text-xl font-medium text-gray-500 hover:text-black transition-colors"
-                >
-                  Process
-                </a>
-                <a
-                  href="#work"
-                  onClick={() => setIsOpen(false)}
-                  className="text-xl font-medium text-gray-500 hover:text-black transition-colors"
-                >
-                  Work
-                </a>
-                <button className="bg-black text-white px-6 py-4 rounded font-semibold mt-4 w-full text-lg">
-                  Get in touch
-                </button>
+              <div className="px-8 py-10 flex flex-col gap-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="px-4 py-3 text-lg font-sans font-medium text-neutral-600 hover:text-black hover:bg-[#f5f5f5] rounded-xl transition-all duration-[250ms]"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <div className="pt-6 mt-2 border-t border-black/5">
+                  <button className="bg-black text-white px-6 py-4 rounded-full font-medium w-full text-lg shadow-sm">
+                    Start Project
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}

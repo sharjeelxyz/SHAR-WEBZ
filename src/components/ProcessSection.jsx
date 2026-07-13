@@ -32,7 +32,7 @@ const ProcessSection = () => {
   return (
     <section
       id="process"
-      className="py-24 md:py-32 bg-white border-t border-black/10"
+      className="py-24 md:py-32 bg-[#e5e5e5] border-t border-black/10"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -59,7 +59,6 @@ const ProcessSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative">
-          {/* Subtle connecting line for desktop */}
           {/* <div className="hidden md:block absolute top-6 left-6 right-6 h-[1px] bg-black/10" /> */}
 
           {steps.map((step, index) => (
