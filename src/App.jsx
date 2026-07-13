@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import WhatWeBuildSection from './components/WhatWeBuildSection';
 import ServicesSection from './components/ServicesSection';
 import ProcessSection from './components/ProcessSection';
 import Footer from './components/Footer';
@@ -10,6 +11,7 @@ function App() {
     <div className="bg-white min-h-screen text-black font-sans selection:bg-black selection:text-white overflow-x-hidden">
       <Navbar />
       <HeroSection />
+      <WhatWeBuildSection />
       <ServicesSection />
       <ProcessSection />
       <Footer />
